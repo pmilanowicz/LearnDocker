@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  load_balancer:
+    image: dockercloud/haproxy
+    links:
+      - hello
+    ports:
+      - 81:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  hello:
+    image: pmilanowicz/hello-node:v2
+#    ports:
+#      - 3001:3000
